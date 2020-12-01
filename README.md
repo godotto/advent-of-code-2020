@@ -1,2 +1,3 @@
 # advent-of-code-2020
-Solutions to 2020 edition of Advent of Code written in C#
+My another approach to Advent of Code in C#. The goal remains the same &ndash; to improve my C# skills and have some fun.
+I hope this year I will last longer!
