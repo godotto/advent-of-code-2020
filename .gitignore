@@ -1,0 +1,12 @@
+# .NET Core build folders
+bin
+obj
+
+# Csharp project file
+*.csproj
+
+# VisualStudioCode
+.vscode
+
+# input files
+*input.txt
