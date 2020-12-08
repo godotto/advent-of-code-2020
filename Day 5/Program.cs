@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Day_5
 {
@@ -14,7 +15,7 @@ namespace Day_5
         the codes from boarding passes to binary numbers (each operation on seats can be represented
         as a bit) - first seven bits yield a row number and the three bits yield a column number.
         Note: the code consists of two binary words, not one long*/
-        static string TranslateLetterCodeToBin(string letterCode) 
+        static string TranslateLetterCodeToBin(string letterCode)
         {
             letterCode = letterCode.Replace('F', '0'); // take the lower half rows
             letterCode = letterCode.Replace('B', '1'); // take the higher half rows
@@ -27,6 +28,7 @@ namespace Day_5
         static int HighestSeatId(string[] input)
         {
             var maxId = 0;
+            var allIds = new List<int>();
 
             foreach (var boardingPass in input)
             {
@@ -37,6 +39,18 @@ namespace Day_5
 
                 var seatId = row * 8 + column; // 8 is a number given in task to generate id, it has no special meaning
                 maxId = seatId > maxId ? seatId : maxId;
+
+                allIds.Add(seatId);
+            }
+
+            allIds.Sort();
+            for (var i = 0; i < allIds.Count - 1; i++)
+            {
+                if (allIds[i + 1] - allIds[i] == 2) // if IDs on two consecutive indices are not consecutive, the one between them is the missing one
+                {
+                    Console.WriteLine(allIds[i] + 1); // solution for part two
+                    break;
+                }
             }
 
             return maxId;
